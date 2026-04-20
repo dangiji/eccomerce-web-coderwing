@@ -1,14 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
   const [isAuth, setIsAuth] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const location = useLocation();
 
   useEffect(() => {
     setIsAuth(Boolean(localStorage.getItem('token')));
   }, [location]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
   return (
     <header className="header">
@@ -21,10 +40,17 @@ function Header() {
           </div>
           <div className="header-links">
             {isAuth ? (
-              <>
-                <Link to="/account" className="header-link">Account</Link>
-                <Link to="/logout" className="header-link">Logout</Link>
-              </>
+              <div className="user-dropdown" ref={dropdownRef}>
+                <button className="dropdown-toggle" onClick={toggleDropdown}>
+                  <span>👤</span> My Account <span className="dropdown-arrow">▼</span>
+                </button>
+                {dropdownOpen && (
+                  <div className="dropdown-menu">
+                    <Link to="/account">Account</Link>
+                    <Link to="/logout">Logout</Link>
+                  </div>
+                )}
+              </div>
             ) : (
               <>
                 <Link to="/login" className="header-link">Login</Link>
