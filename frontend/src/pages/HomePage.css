@@ -1,0 +1,151 @@
+.home-page {
+  padding: 30px 20px;
+  background-color: #f5f6f8;
+}
+
+.hero-section {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 30px;
+  align-items: center;
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  margin-bottom: 40px;
+}
+
+.hero-badge {
+  display: inline-block;
+  background-color: #ffe8e8;
+  color: #d93737;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 18px;
+  line-height: 1.05;
+}
+
+.hero-section p {
+  font-size: 1rem;
+  margin-bottom: 24px;
+  color: #5f6368;
+  max-width: 580px;
+}
+
+.hero-button {
+  display: inline-block;
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: 16px;
+}
+
+.categories-section,
+.products-section,
+.promo-banner {
+  margin-bottom: 40px;
+}
+
+.categories-section h2,
+.products-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 18px;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.category-card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  font-weight: 600;
+  color: #111827;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.section-subtitle {
+  color: #ff4444;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.view-all-link {
+  color: #ff4444;
+  font-weight: 600;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.promo-banner {
+  background-color: #111827;
+  color: white;
+  padding: 36px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.promo-banner h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.promo-banner p {
+  color: #d1d5db;
+  max-width: 540px;
+}
+
+@media (max-width: 1024px) {
+  .hero-section,
+  .products-grid,
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    padding: 24px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.4rem;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
